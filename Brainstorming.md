@@ -17,5 +17,5 @@ Let's say we wanted to find all the Garage Band files accross all of the mounted
 
 **find / -name "\*.band\*" > mcc1-garage-band-list.txt**
 
-This command will **find**,  starting at the root directory "/" (which will include all hard drives downstream), any file that contains the characters ".band" anywhere in the file nam and finally will write the resulting list of matches to the text file named at the end of the command.   
+This command will **find**,  starting at the root directory "/" (which will include all hard drives downstream), any file that contains the characters ".band" anywhere in the file name and finally will write the resulting list of matches to the text file named at the end of the command.   
 
