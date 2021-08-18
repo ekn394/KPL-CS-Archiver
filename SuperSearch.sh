@@ -7,6 +7,8 @@
 
 clear
 
+graphics(){
+
 echo "                                            .....                           "    
 echo "                                       .::::;,'...                          "
 echo "                    ..                .;::::::::::;,'.                      "
@@ -40,24 +42,48 @@ echo "                   .;,,,,,,,,,,,,;;,.            'clllc,.                 
 echo "                    .,;;;;,,,,,,,,;'.              .','.                    "
 echo "                      ....',;;;;,;;.                                        "
 echo "                            ....''.                                         "
+}
 
+spacer(){
+echo ""
+}
 
 me=$(whoami)
-
-echo KPL - Commons Studio Archiver
-
-echo The flashing cursor below means that it is thinking.  
+echo Projects found on ${me} > ${me}_projects.txt;
+graphics
+echo Commons Studio - Inventory Helper 2000
+spacer
+echo The flashing cursor below means that the program is working.  
 echo This will take some time.
-echo "To stop te process and exit hit control-c  (no, not 'command-c', 'control-c')"
-#echo ${me}_projects.txt 
-echo Searching for GarageBand Files;
-echo "Garage Band Files"> ${me}_projects.txt;
-(find / -name "*.band*" >> ${me}_projects.txt 2> /dev/null );
-echo "";
-echo Searching for Premiere Pro Files;
-echo "Premiere Pro Files">> ${me}_projects.txt;
-(find / -name "*.prproj*" >> ${me}_projects.txt 2> /dev/null);
-echo Finished;
-echo Find the appropriate text file ${me}_projects.txt;
+spacer 
+echo We will search for:
+echo "	GarageBand files	(.band)"
+echo "	Premiere Projects	(.prproj)"
+echo "	Final Cut Projects	(.fcp)"
+echo "	Flash Projects		(.fla)"
+echo "	iMovie Projects		(.rcproject)"
 
+spacer
+echo "To cancel at any time, hit control-C"
+spacer
+
+
+
+for fileType in fla fcp band prproj rcproject
+do
+spacer >> ${me}_projects.txt;
+echo ${fileType} Files >> ${me}_projects.txt;
+echo "" >> ${me}_projects.txt;
+echo Searching for .${fileType} files;
+(find / -not -path "/Applications/*" -not -path "/Library/*" -name "*.${fileType}" >> ${me}_projects.txt 2> /dev/null );
+spacer;
+echo Finished searching for ${fileType} files;
+echo Total projects found so far: $(wc -l ${me}_projects.txt)
+spacer;
+done;
+
+echo Completed all searches.;
+spacer
+echo You can find the results in the text file named ${me}_projects.txt;
+spacer
 
