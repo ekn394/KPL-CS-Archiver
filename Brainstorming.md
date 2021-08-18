@@ -18,11 +18,12 @@ As a starting point, we can search for file extensions that we predict projects 
 
 Let's say we wanted to find all the Garage Band files accross all of the mounted hard drives, and save the resulting list of names (with their file paths) into one text file. 
 
-**find / -name "\*.band\*" > mcc1-garage-band-list.txt**
+**find / -name "\*.band\*" > mcc1-garage-band-list.txt 2> /dev/null**
 
 This command will **find**,  starting at the root directory "/" (which will include all hard drives downstream), any filename that contains the characters ".band" anywhere in the file name and finally will write the resulting list of matches to the text file named at the end of the command.   
+The 2> /dev/null sends warning messages away (rather than have them clutter the screen). 
 
-### Clean up the data 
+### Clean up the data
 
 The text file above will include multiples files for presumably the same project.  A clear example is the multiple autosave files that are created for Premiere Pro projects. 
 Searching for .prproj files will find four hits for this one project.  
@@ -41,4 +42,4 @@ If we drop off the endings starting at the file extension, then we will be left 
 ### Next steps.  Make one Shell script to run all of those searches in one command.  
 Also Pro-Tip:  Instead of searching starting at the root/  if you start the search at /Users  then you don't get a bunch of Tutorial files that match the file type from the /Applications folder.  
 
-**find /Users -name "\*.band\*" > mcc1-garage-band-list.txt**
+**find /Users -name "\*.band\*" > mcc1-garage-band-list.txt 2> /dev/null**

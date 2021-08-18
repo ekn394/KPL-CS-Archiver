@@ -1,4 +1,10 @@
 #! /bin/bash
+
+# Created by Evan Nordquist
+# August 2021
+# Purpose: Scan through all drives and create an inventory of project files. 
+# Project Files could be from Photoshop, Premiere Pro, Garageband, Final Cut Pro, etc. 
+
 clear
 
 echo "                                            .....                           "    
