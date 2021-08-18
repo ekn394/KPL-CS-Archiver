@@ -7,11 +7,13 @@ As a starting point, we can search for file extensions that we predict projects 
 ### Types of files to search for
 <ul> 
   
-  <li>.band   Garage Band </li>
-  <li>.prpoj  Premiere Projects </li>
-  <li>.fcp    Final Cut Pro </li>
-  <li><strike>.MOV    Movie Files </strike></li>
-  <li>.mp4    Mpeg  </li>
+  <li>.band     Garage Band </li>
+  <li>.prpoj    Premiere Projects </li>
+  <li>.fcp      Final Cut Pro </li>
+  <li><strike>.MOV      Movie Files </strike></li>
+  <li><strike>.mp4      Mpeg  </strike></li>
+  <li>.fla      Flash </li>
+  <li>.rcproject  iMovie </li>
 </ul>
 
 Let's say we wanted to find all the Garage Band files accross all of the mounted hard drives, and save the resulting list of names (with their file paths) into one text file. 
@@ -36,9 +38,7 @@ If we drop off the endings starting at the file extension, then we will be left 
 <br>
 <a href="https://github.com/ekn394/KPL-Commons-Studio-Archive-Helper/blob/main/removeDuplicates.py"> A python program </a> was created to scrape away the endings of the files in different ways depending on the circumstances.  If the file ended in the format _hyphen-number-dot-fileType_, we would cut off the name at the hyphen.  Otherwise, as is the case with the myProject.prproj example above, cut off the file at the final '.' of the file type.
 
-### Next Steps 
+### Next steps.  Make one Shell script to run all of those searches in one command.  
+Also Pro-Tip:  Instead of searching starting at the root/  if you start the search at /Users  then you don't get a bunch of Tutorial files that match the file type from the /Applications folder.  
 
-Modify the python code so that the text file to be processed is an argument that can be passed in from the terminal.  That way it can be run on multiple files without editing any code.  Or bash scripts could be setup to run the program repeatedly using a list of file names. 
-
-
-
+**find /Users -name "\*.band\*" > mcc1-garage-band-list.txt**
