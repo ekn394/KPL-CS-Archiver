@@ -8,7 +8,7 @@ As a starting point, we can search for file extensions that we predict projects 
 <ul> 
   
   <li>.band     Garage Band </li>
-  <li>.prpoj    Premiere Projects </li>
+  <li>.prproj    Premiere Projects </li>
   <li>.fcp      Final Cut Pro </li>
   <li><strike>.MOV      Movie Files </strike></li>
   <li><strike>.mp4      Mpeg  </strike></li>
