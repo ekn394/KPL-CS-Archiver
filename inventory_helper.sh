@@ -12,6 +12,7 @@
 
 me=$(hostname) # The name of the device
 search_from=$(".") # Starting directory for the search
+keywords=(txt py html)
 output_html=${me}_projects.html # output html file
 output_txt=${me}_projects.txt # output text file
 
@@ -96,7 +97,7 @@ intro
 echo '<h1>'Projects found on ${me}'</h1>' > ${output_html};
 echo Projects found on ${me} > ${output_txt};
 #for fileType in fla fcp band prproj rcproject
-for fileType in txt py;
+for fileType in ${keywords[@]};
 do
 spacer >> ${output_html};
 spacer >> ${output_txt};
