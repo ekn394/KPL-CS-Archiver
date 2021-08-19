@@ -2,12 +2,24 @@
 
 # Created by Evan Nordquist
 # August 2021
-# Purpose: Scan through all drives and create an inventory of project files. 
-# Project Files could be from Photoshop, Premiere Pro, Garageband, Final Cut Pro, etc. 
+# Purpose: Scan through hard drives to create an inventory of project files. 
+# Project Files could be files associated with Photoshop, Premiere Pro, Garageband, Final Cut Pro, etc. 
 
-clear
 
-graphics(){
+####################
+# Set up Variables #
+####################
+
+me=$(hostname) # The name of the device
+search_from=$(".") # Starting directory for the search
+output_html=${me}_projects.html # output html file
+output_txt=${me}_projects.txt # output text file
+
+
+####################
+# Helper Functions #
+####################
+function graphics(){
 
 echo "                                            .....                           "    
 echo "                                       .::::;,'...                          "
@@ -44,12 +56,12 @@ echo "                      ....',;;;;,;;.                                      
 echo "                            ....''.                                         "
 }
 
-spacer(){
+function spacer(){
 echo ""
 }
 
-me=$(hostname)
-echo Projects found on ${me} > ${me}_projects.txt;
+function intro(){
+clear
 graphics
 echo Commons Studio - Inventory Helper 2000
 spacer
@@ -62,29 +74,49 @@ echo "	Premiere Projects	(.prproj)"
 echo "	Final Cut Projects	(.fcp)"
 echo "	Flash Projects		(.fla)"
 echo "	iMovie Projects		(.rcproject)"
-
 spacer
 echo "To cancel at any time, hit control-C"
 spacer
+}
 
-
-
-for fileType in fla fcp band prproj rcproject
-do
-spacer >> ${me}_projects.txt;
-echo ${fileType} Files >> ${me}_projects.txt;
-echo "" >> ${me}_projects.txt;
-echo Searching for .${fileType} files;
-#(find / -not -path "/Applications/*" -not -path "/Library/*" -name "*.${fileType}" >> ${me}_projects.txt 2> /dev/null );
-(find / -not -path "/Applications/*" -not -path "/Library/*" -type f \( -name "*.txt" -o -name "*.py" \) | tee ${me}_projects.txt backup.txt 2> /dev/null ); 
-spacer;
-echo Finished searching for ${fileType} files;
-echo Total projects found so far: $(wc -l ${me}_projects.txt)
-spacer;
-done;
-
+function outro(){
 echo Completed all searches.;
 spacer
-echo You can find the results in the text file named ${me}_projects.txt;
+echo You can find the results in the files listed below:
+echo ${output_html};
+echo ${output_txt};
 spacer
+}
 
+####################
+#    Main Logic    #
+####################
+
+intro
+echo '<h1>'Projects found on ${me}'</h1>' > ${output_html};
+echo Projects found on ${me} > ${output_txt};
+#for fileType in fla fcp band prproj rcproject
+for fileType in txt py;
+do
+spacer >> ${output_html};
+spacer >> ${output_txt};
+echo '<h2>'${fileType} Files '</h2>' >> ${output_html};
+echo ${fileType} Files >> ${output_txt};
+spacer >> ${output_html};
+spacer >> ${output_txt};
+echo Searching for .${fileType} files;
+array=$(find ${search_from} -name "*.${fileType}" 2> /dev/null)
+for item in ${array[@]}; 
+do
+    echo '<li>'${item}'</li>' >> ${output_html} ;
+    echo ${item} >> ${output_txt} ;
+    echo ${item}
+done;
+echo Finished searching for ${fileType} files;
+spacer;
+done;
+outro
+
+# For future reference, other search methods. 
+#(find / -not -path "/Applications/*" -not -path "/Library/*" -name "*.${fileType}" >> ${output_html} 2> /dev/null );
+#echo (find / -not -path "/Applications/*" -not -path "/Library/*" -type f \( -name "*.txt" -o -name "*.py" \)  >> | tee ${output_html} 2> /dev/null ); 
