@@ -11,8 +11,8 @@
 ####################
 
 me=$(hostname) # The name of the device
-search_from=($HOME /Volumes) # Starting directories for the search
-keywords=(prproj fcp fla rcproject band psd)
+search_from=($HOME /d) # Starting directories for the search (add drives like /d /e /f etc)
+keywords=(prproj fcp fla rcproject band psd mp4)
 output_html=${me}_projects.html # output html file
 output_txt=${me}_projects.txt # output text file
 
