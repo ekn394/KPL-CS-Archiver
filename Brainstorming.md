@@ -42,4 +42,7 @@ If we drop off the endings starting at the file extension, then we will be left 
 
 ### Next steps.  Make one shell script to run all of those searches in one command.  
 
+Update: This is now accomplished by the shell script <a href="https://github.com/ekn394/KPL-CS-Archiver/blob/main/mac_inventory_helper.sh"> mac_inventory_helper.sh </a>.  
+
+There is also a Windows equivalent shell script where the only change is where to start searching.  For Mac the external drives are all located at /Volumes  where on Windows, the drives can be found at /d /e /f  etc.  The variable for where to start the search allows you to specify multiple starting points separated by spaces.   
 
