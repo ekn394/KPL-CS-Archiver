@@ -44,5 +44,5 @@ If we drop off the endings starting at the file extension, then we will be left 
 
 Update: This is now accomplished by the shell script <a href="https://github.com/ekn394/KPL-CS-Archiver/blob/main/mac_inventory_helper.sh"> mac_inventory_helper.sh </a>.  
 
-There is also a Windows equivalent shell script where the only change is where to start searching.  For Mac the external drives are all located at /Volumes, where on Windows, the drives can be found at /d /e /f  etc.  There is a variable for where to start the search that allows you to select multiple starting locations (multiple drives) if you name list their drive names /e /f separated by spaces.   
+There is also a Windows equivalent shell script where the only change is where to start searching.  For Mac the external drives are all located at /Volumes, where on Windows, the drives can be found at /d /e /f  etc.  The variable <code>search_from</code> allows you to select multiple starting locations (multiple drives) if you name list their drive names separated by spaces.   
 
